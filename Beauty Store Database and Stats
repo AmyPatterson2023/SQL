@@ -1,0 +1,14 @@
+-- Create a Beauty Store Database
+
+CREATE TABLE BeautyStore (id Integer Primary Key, Name TEXT, Stock INTEGER, Price INTEGER, Aisle INTEGER);
+
+INSERT INTO BeautyStore VALUES (1, "oil", 40, 8.39, 5), (2, "brush", 25, 9.99, 2), (3, "comb", 32, 5.99, 2), (4, "lotion", 57, 12.49, 5), (5, "scarf", 15, 7.99, 1), (6, "hair", 24, 24.95, 3), (7, "bobbypins", 50, 2.59, 3), (8, "conditioner", 30, 14.99, 7), (9, "shampoo", 30, 13.99, 7), (10, "color", 65, 11.24, 7), (11, "mask", 46, 3.29, 4), (12, "dryer", 12, 56.99, 5), (13, "eyelashes", 18, 22.99, 2), (14, "powder", 10, 4.79, 6), (15, "spray", 20, 8.99, 2);
+
+-- Display the Database Ordered by Price
+
+SELECT * FROM BeautyStore WHERE Price ORDER BY PRICE;
+
+-- Display how many items are in stock in each aisle
+
+SELECT Aisle, SUM(Stock) FROM BeautyStore GROUP BY Aisle;
+
