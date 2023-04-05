@@ -1,0 +1,96 @@
+/* Create a table about the famous black inventors and what they did. */
+
+CREATE TABLE Black_Inventors (id Integer PRIMARY KEY,
+  name text,birth_year Integer,death_year Integer);
+
+INSERT INTO Black_Inventors (id, name, birth_year, death_year)
+VALUES
+  (1, 'Granville T. Woods', 1856, 1910),
+  (2, 'Madam C.J. Walker', 1867, 1919),
+  (3, 'George Washington Carver', 1864, 1943),
+  (4, 'Elijah McCoy', 1844, 1929),
+  (5, 'Jan Ernst Matzeliger', 1852, 1889),
+  (6, 'Lewis Latimer', 1848, 1928);
+  
+  /* Create tables showing what each person invented. */
+
+CREATE TABLE Woods_inventions
+  (id Integer PRIMARY KEY,
+  inventor_id Integer,
+  invention text);
+
+INSERT INTO Woods_inventions (id, inventor_id, invention)
+VALUES
+  (1, 1, 'Telegraphony'),
+  (2, 1, 'Electric Railway'),
+  (3, 1, 'Synchronous Multiplex Railway Telegraph'),
+  (4, 1, 'Third Rail'),
+  (5, 1, 'Induction Telegraph'),
+  (6, 1, 'Steam Boiler Furnace');
+
+CREATE TABLE Walker_inventions
+  (id Integer PRIMARY KEY,
+  inventor_id Integer,
+  invention text);
+
+INSERT INTO Walker_inventions (id, inventor_id, invention)
+VALUES
+  (1, 2, 'Hair Care Products'),
+  (2, 2, 'Cosmetics'),
+  (3, 2, 'Beauty Schools');
+
+CREATE TABLE Carver_inventions
+  (id Integer PRIMARY KEY,
+  inventor_id Integer,
+  invention text);
+
+INSERT INTO Carver_inventions (id, inventor_id, invention)
+VALUES
+  (1, 3, 'Crop Rotation'),
+  (2, 3, 'Peanut Butter'),
+  (3, 3, 'Sweet Potato Products'),
+  (4, 3, 'Chemurgy');
+
+CREATE TABLE McCoy_inventions
+  (id Integer PRIMARY KEY,
+  inventor_id Integer,
+  invention text);
+
+INSERT INTO McCoy_inventions (id, inventor_id, invention)
+VALUES
+  (1, 4, 'Lubrication Systems for Machines'),
+  (2, 4, 'Steam Engine Improvements');
+
+CREATE TABLE Matzeliger_inventions
+  (id Integer PRIMARY KEY,
+  inventor_id Integer,
+  invention text);
+
+INSERT INTO Matzeliger_inventions (id, inventor_id, invention)
+VALUES
+  (1, 5, 'Lasting Machine');
+
+CREATE TABLE Latimer_inventions
+  (id Integer PRIMARY KEY,
+  inventor_id Integer,
+  invention text);
+
+INSERT INTO Latimer_inventions (id, inventor_id, invention)
+VALUES
+  (1, 6, 'Carbon Filament for Light Bulbs'),
+  (2, 6, 'Water Closet for Railroad Cars');
+
+SELECT b.name, w.invention
+FROM Black_Inventors b
+JOIN Woods_inventions w ON b.id = w.inventor_id
+WHERE b.name = 'Granville T. Woods';
+
+SELECT b.name, w.invention
+FROM Black_Inventors b
+JOIN Walker_inventions w ON b.id = w.inventor_id;
+
+CREATE TABLE Birth_Year_of_Inventor
+  (id Integer PRIMARY KEY,
+  name text,
+  birth_year Integer,
+  invention text);
